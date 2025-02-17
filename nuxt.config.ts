@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     'nuxt-api-party',
     '@nuxt/content',
-    '@nuxt/image',
   ],
 
   experimental: {

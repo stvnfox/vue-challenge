@@ -3,21 +3,19 @@ title: Rick & Morty and Pokémon Overview Application
 description: Instructions for the Rick & Morty and Pokémon Overview Application assignment
 ---
 
-# Assignment: Rick & Morty and Pokémon Overview Application
-
-Please read these instructions carefully.
+# Rick & Morty and Pokémon Overview Application
 
 ## Objective
 
-Create a Nuxt application to showcase two distinct content overviews:
+Create a scalable Nuxt application that displays two overviews: **Rick & Morty characters** and **Pokémon**. Each overview must:
 
-1. **Rick and Morty characters**
-2. **Pokémon**
+1. **Overview Pages**: One for Rick & Morty and one for Pokémon.
+2. **Detail Pages**: Clicking an item should navigate to a detail page, showing its specific data.
 
-Each overview must be accessible via a separate page. Selecting an item from an overview should navigate users to a detailed page for that item. The user experience (UX) across overviews and detail pages should be consistent, with only the data changing based on the selected item (Rick & Morty character or Pokémon). Both APIs are integrated in the project, but you may add a third if desired. Refer to the API documentation:
+Use these APIs:
 
-- [Rick and Morty API](https://rickandmortyapi.com/documentation).
-- [Pokémon API](https://pokeapi.co/docs/v2).
+- [Rick and Morty API](https://rickandmortyapi.com/documentation)
+- [Pokémon API](https://pokeapi.co/docs/v2)
 
 ## Wireframes
 
@@ -25,8 +23,6 @@ You are free to design the application as you see fit, but you can use the follo
 
 ::content-wireframes
 ::
-
----
 
 ## Deliverable
 
@@ -36,93 +32,48 @@ Fork this repository and submit your solution as a new repository. Once complete
 
 ### 1. Overviews
 
-- **Separate Pages**: Each overview (Rick & Morty and Pokémon) should be on its own page.
-- **Consistent UI/UX**: The overview and detail pages should maintain a unified design, with the only difference being the displayed data.
-- **Navigation**: Clicking an item in the overview should navigate to a detail page with specific information about the selected character or Pokémon.
+- **Separate Pages**: One page for each overview (Rick & Morty, Pokémon).
+- **UI/UX Consistency**: The design of both overviews and their detail pages must be the same. Only the data changes.
+- **Navigation**: Clicking an item in an overview should take you to a detailed page showing that item’s specific data.
 
 ### 2. Detail Pages
 
-- **Dedicated Detail Pages**: Each character or Pokémon should have its own detail page, navigable from the overview.
-- **Component Structure**: Design components with scalability in mind to facilitate adding more overviews in the future without significant rework.
-- **View Modes**: Implement grid and list view options for the overviews.
-- **Consistent Layout**: The layout for Rick & Morty and Pokémon detail pages should be identical in structure, displaying only the relevant content.
+- **Unique Pages**: Each character or Pokémon should have its own detail page.
+- **Modular Components**: Design reusable components that handle data display, with no duplication of logic. **Components should not mix data handling and UI rendering**—separate the two.
+- **View Modes**: Implement both grid and list view options for the overviews.
+- **Layout Consistency**: Ensure that both Rick & Morty and Pokémon detail pages have the same layout structure.
 
-### Bonus Points
+### Key Concepts
 
-- **Unit Testing**: Add one or more unit tests to ensure component functionality and reusability.
+1. **Scalability and Reusability**:
 
----
+   - **Do NOT hard-code**. Components should be flexible, designed for future use cases without significant changes.
+   - **Data Handling & UI Separation**: Build **UI components** that simply **take in data**, and create **other components** that manage and provide that data. Don’t put data-fetching or logic in UI components.
+   - **Single Responsibility**: Each component should handle **one responsibility only**. Don’t pile everything into one component—keep logic and UI separate.
 
-## Key Development Concepts to Demonstrate
+2. **Composition Over Inheritance**:
 
-1. **Reusability**
+   - Use composition to build flexible components. Avoid tightly coupling logic or styles with conditionals like `if/else`.
 
-   - Code should be scalable and reusable, with no hard-coding or tight coupling for specific scenarios.
+3. **Project Structure**: Organize your project with clarity, separating concerns in folders and files.
 
-2. **Composition Over Inheritance**
+### Technical Requirements
 
-   - Avoid using `if/else` statements for conditional CSS classes; instead, make components as modular and single-purpose as possible. However, it's perfectly acceptable to use `if/else` logic to render different components based on the application state.
+- **API Integration**: Handle data fetching through **API Party composables**.
 
-3. **Single Responsibility Components**
+### Final Notes
 
-   - Keep components focused on a single function, avoiding excessive logic or UI in one place when it can be split into smaller modules.
-
-4. **Two-Way Data Binding** (when applicable)
-
-   - If state sharing between components is needed, use `v-model` or similar for reactive state management between parent and child components, ensuring proper data flow and avoiding anti-patterns.
-
-5. **Project Structure**
-
-   - Organize the project structure clearly, using folders and files to separate concerns and maintain a clean codebase.
+- **Focus on Scalability**: This is the key! Design your app to grow easily with new overviews or pages. It should be easy to add another overview or extend data without rewriting large parts of the code.
 
 ---
 
-## Technical Requirements
+## Checklist (We will reject hand-ins that fail on any of the following)
 
-- **State Management**: Use a global state if needed. Pinia is already installed; refer to the [Pinia documentation](https://pinia.vuejs.org/) for guidance. You can also consider using `provide` and `inject` with VueUse if appropriate. Managing the view mode (grid or list) for each overview could be a good use of state.
-
-- **API Integration**: Handle data fetching through the API Party composables. Refer to the [API Party documentation](https://example.com/api-party) for guidance. The current landing page includes an example.
-
-- **UI Components**: Use components from [Nuxt UI](https://ui.nuxt.com/) to maintain design consistency. Tailwind CSS is pre-configured and can be customized as needed.
-
-## Additional Resources
-
-- **VueUse Functions**: VueUse composables are auto-imported. Use them as needed—check the [VueUse documentation](https://vueuse.org/) for more information.
-
-- **Nuxt & Vue**: Ensure that your components, pages, and logic align with Nuxt and Vue.js best practices.
-
----
-
-## TypeScript
-
-If you choose to use TypeScript:
-
-- **Scalable Usage**: Ensure that your TypeScript implementation is scalable, reusable, and follows best practices.
-
----
-
-## Final Guidelines
-
-- **Enjoy the Project!** We’re excited to see your approach to the challenge. Reach out with any questions.
-- **Commit Regularly**: Make frequent commits for better version control.
-- **Package Manager**: The project specifies `pnpm` in `package.json`. If you prefer another package manager, you can change it, but please delete the `pnpm` lock file and commit the new one.
-- **Netlify Deployment**: You can deploy your project on Netlify, which is pre-configured. Follow the [Netlify documentation](https://docs.netlify.com/site-deploys/create-deploys/) for deployment instructions. If you deploy, set the website address in your repository settings.
-- **Linter rules**: We'd prefer you sticking to existing linter rules. These are the rules we use in our projects. If you want to change them, please let us know why.
-
----
-
-## Getting Started
-
-### 1. Clone to Local Machine
-
-```bash
-npx degit spend-cloud-tom/front-end-boilerplate proactive-technical-assessment-my-name
-cd proactive-technical-assessment-my-name
-pnpm i # If pnpm isn’t installed, run: npm install -g pnpm
-```
-
-### 2. Run the Project
-
-```bash
-pnpm run dev
-```
+- [ ] **Separate Pages** for each overview (Rick & Morty, Pokémon).
+- [ ] **Navigation** from overview to detail pages.
+- [ ] **Consistent UI/UX** between overviews and detail pages.
+- [ ] **Grid and List Views** implemented.
+- [ ] **Modular UI Components**: Components must only handle UI, not logic. Logic for data fetching and handling should be in separate components.
+- [ ] **Clear Separation of Concerns**: No component should mix too much logic with rendering. Keep them single-purpose.
+- [ ] **Reusable Components**: Build components that are scalable and flexible.
+- [ ] **API Data Fetching**: Ensure data from the APIs is fetched and displayed correctly. Please check out the existing examples in the example code.
