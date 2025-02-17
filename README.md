@@ -16,8 +16,7 @@ Use these APIs:
 
 You are free to design the application as you see fit, but you can use the following wireframes as a reference:
 
-::content-wireframes
-::
+[![Wireframes](./public/images/wireframes.svg)](./public/images/wireframes.svg)
 
 ## Deliverable
 
