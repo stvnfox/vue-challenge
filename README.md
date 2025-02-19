@@ -43,25 +43,27 @@ Fork this repository and submit your solution as a new repository. Once complete
 
    - **Do NOT hard-code**. Components should be flexible, designed for future use cases without significant changes.
 
-   By hard-coding, we mean things like:
+      ### Hard coding?
 
-   ```vue
-   <script lang="ts" setup>
-   const props = defineProps<{
-      character: Character;
-   }>()
+      Check out the folling example:
 
-   if (props.character.universe === 'Rick & Morty') {
-      // Do something
-   } else if (props.character.universe === 'Pokémon') {
-      // Do something else
-   } else {
-      createError('Invalid universe')
-   }
-   </script>
-   ```
+      ```ts
+      const props = defineProps<{
+         character: Character;
+      }>()
 
-   Instead, create a solution where you can easily add new universes without changing the existing code. Lots of components are not necessarily a bad thing if they are well-organized. Remember: composition over inheritance.
+      if (props.character.universe === 'Rick & Morty') {
+         // Do something
+      } else if (props.character.universe === 'Pokémon') {
+         // Do something else
+      } else {
+         createError('Invalid universe')
+      }
+      ```
+
+      This is not scalable because you have to change the code every time you add a new universe.
+
+      Instead, create a solution where you can easily add new universes without changing the existing code. Lots of components are not necessarily a bad thing if they are well-organized. Remember: composition over inheritance.
 
    - **Data Handling & UI Separation**: Build **UI components** that simply **take in data**, and create **other components** that manage and provide that data. Don’t put data-fetching or logic in UI components.
    - **Single Responsibility**: Each component should handle **one responsibility only**. Don’t pile everything into one component—keep logic and UI separate.
