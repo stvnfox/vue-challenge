@@ -7,5 +7,6 @@
     "Buffalo"
   ],
   "size": "Large",
-  "lifespan": 20
+  "lifespan": 20,
+  "icon": "game-icons:tiger-head"
 }

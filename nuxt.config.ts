@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@vueuse/nuxt',
     'nuxt-api-party',
+    '@nuxt/image',
   ],
 
   experimental: {

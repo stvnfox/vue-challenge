@@ -6,6 +6,7 @@ export default defineContentConfig({
       source: '**/*.md',
       type: 'page',
     }),
+
     lordOfTheRingsCharacter: defineCollection({
       source: 'universes/lord-of-the-rings/characters/*.json',
       type: 'data',
@@ -15,8 +16,10 @@ export default defineContentConfig({
         hobbies: z.array(z.string()),
         age: z.number(),
         height: z.number(),
+        image: z.string().optional(),
       }),
     }),
+
     natureAnimal: defineCollection({
       source: 'universes/nature/animals/*.json',
       type: 'data',
@@ -26,8 +29,8 @@ export default defineContentConfig({
         diet: z.array(z.string()),
         size: z.string(),
         lifespan: z.number(),
+        icon: z.string().optional(),
       }),
     }),
-
   },
 })

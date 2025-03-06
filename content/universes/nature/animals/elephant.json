@@ -7,5 +7,6 @@
     "Leaves"
   ],
   "size": "Large",
-  "lifespan": 60
+  "lifespan": 60,
+  "icon": "mdi:elephant"
 }

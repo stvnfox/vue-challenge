@@ -6,12 +6,18 @@ const props = defineProps<{
 }>()
 
 const name = computed(() => {
-  return [props.character.nameFirst, props.character.nameLast].join(' ')
+  return [props.character.nameFirst, props.character.nameLast].filter(Boolean).join(' ')
 })
 </script>
 
 <template>
   <ExampleCharacter :name="name">
+    <UAvatar
+      :src="props.character.image"
+      :alt="name"
+      size="3xl"
+    />
+
     <ExampleCharacterDetail label="Hobbies">
       <ExampleCharacterDetailList :items="props.character.hobbies" />
     </ExampleCharacterDetail>

@@ -7,5 +7,6 @@
     "Fruit"
   ],
   "size": "Small",
-  "lifespan": 2
+  "lifespan": 2,
+  "icon": "game-icons:mouse"
 }
