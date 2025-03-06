@@ -15,23 +15,23 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.2.1",
-    "@nuxt/content": "^3.1.1",
-    "@nuxt/devtools": "2.1.0",
-    "@nuxt/eslint": "^1.0.1",
+    "@antfu/eslint-config": "^4.5.1",
+    "@nuxt/content": "^3.3.0",
+    "@nuxt/devtools": "2.2.1",
+    "@nuxt/eslint": "^1.1.0",
     "@nuxt/ui": "^2.21.0",
     "@pinia/nuxt": "^0.10.1",
     "@tailwindcss/typography": "^0.5.16",
     "@vite-pwa/nuxt": "^0.10.6",
-    "@vueuse/nuxt": "^12.4.0",
+    "@vueuse/nuxt": "^12.8.2",
     "consola": "^3.4.0",
-    "eslint": "^9.18.0",
+    "eslint": "^9.21.0",
     "eslint-plugin-format": "^1.0.1",
-    "nuxt": "^3.15.2",
-    "nuxt-api-party": "^2.1.0",
+    "nuxt": "^3.15.4",
+    "nuxt-api-party": "^2.1.2",
     "pinia": "^3.0.1",
-    "typescript": "^5.7.3",
-    "vue-tsc": "^2.2.0"
+    "typescript": "^5.8.2",
+    "vue-tsc": "^2.2.8"
   },
   "resolutions": {
     "@typescript-eslint/utils": "^8.6.0"

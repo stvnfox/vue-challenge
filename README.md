@@ -43,27 +43,29 @@ Fork this repository and submit your solution as a new repository. Once complete
 
    - **Do NOT hard-code**. Components should be flexible, designed for future use cases without significant changes.
 
-      ### Hard coding?
+     ### Hard coding?
 
-      Check out the following example:
+     Check out the following example:
 
-      ```ts
-      const props = defineProps<{
-         character: Character;
-      }>()
+     ```ts
+     const props = defineProps<{
+       character: Character
+     }>()
 
-      if (props.character.universe === 'Rick & Morty') {
-         // Do something
-      } else if (props.character.universe === 'Pokémon') {
-         // Do something else
-      } else {
-         createError('Invalid universe')
-      }
-      ```
+     if (props.character.universe === 'Rick & Morty') {
+       // Do something
+     }
+     else if (props.character.universe === 'Pokémon') {
+       // Do something else
+     }
+     else {
+       createError('Invalid universe')
+     }
+     ```
 
-      This is not scalable because you have to change the code every time you add a new universe.
+     This is not scalable because you have to change the code every time you add a new universe.
 
-      Instead, create a solution where you can easily add new universes without changing the existing code. Lots of components are not necessarily a bad thing if they are well-organized. Remember: composition over inheritance.
+     Instead, create a solution where you can easily add new universes without changing the existing code. Lots of components are not necessarily a bad thing if they are well-organized. Remember: composition over inheritance.
 
    - **Data Handling & UI Separation**: Build **UI components** that simply **take in data**, and create **other components** that manage and provide that data. Don’t put data-fetching or logic in UI components.
    - **Single Responsibility**: Each component should handle **one responsibility only**. Don’t pile everything into one component—keep logic and UI separate.
@@ -89,7 +91,7 @@ Fork this repository and submit your solution as a new repository. Once complete
 - [ ] **Separate Pages** for each overview (Rick & Morty, Pokémon).
 - [ ] **Navigation** from overview to detail pages.
 - [ ] **Consistent UI/UX** between overviews and detail pages.
-- [ ] **Grid and List Views** implemented.
+- [ ] **Grid and List Views** implemented. Bonus points if you make sure that each separate overview remembers the last view mode selected. Example: Rick & Morty in grid view, Pokémon in list view.
 - [ ] **Modular UI Components**: UI components should focus only on presentation, while data fetching and logic should be handled separately. A component that fetches data should do just that and pass it to a UI component for rendering. This keeps responsibilities clear, making the code easier to maintain and understand.
 - [ ] **Clear Separation of Concerns**: No component should mix too much logic with rendering. Keep them single-purpose.
 - [ ] **Reusable Components**: Build components that are scalable and flexible.
