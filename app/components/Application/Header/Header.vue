@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-zinc-100 border-b border-b-zinc-200 dark:bg-zinc-700 dark:border-b-zinc-600 py-8">
-    <UContainer class="flex items-center">
+  <header class="bg-neutral-50 dark:bg-neutral-950 border-b border-b-neutral-100 dark:border-b-neutral-800">
+    <UContainer class="flex items-center h-20">
       <nav>
         <ul class="flex gap-2">
           <li>
@@ -11,8 +11,9 @@
           </li>
         </ul>
       </nav>
-      <div class="ml-auto">
-        <UButton to="https://github.com/spend-cloud-tom/front-end-boilerplate" icon="mdi:github" color="blue" label="GitHub repository" variant="outline" />
+      <div class="ml-auto flex gap-2">
+        <UButton to="https://github.com/spend-cloud-tom/front-end-boilerplate" icon="mdi:github" label="GitHub repository" variant="outline" />
+        <ApplicationColorMode />
       </div>
     </UContainer>
   </header>
