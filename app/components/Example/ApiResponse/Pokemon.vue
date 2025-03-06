@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const { data } = usePokemonData('pokemon')
+const { data, status } = usePokemonData('pokemon')
 </script>
 
 <template>
-  <ExampleApiResponse :response="data" />
+  <ExampleApiResponse v-if="status === 'success'" :response="data" />
 </template>

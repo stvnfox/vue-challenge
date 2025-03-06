@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const { data } = useRickAndMortyData('character')
+const { data, status } = useRickAndMortyData('character')
 </script>
 
 <template>
-  <ExampleApiResponse :response="data" />
+  <ExampleApiResponse v-if="status === 'success'" :response="data" />
 </template>
