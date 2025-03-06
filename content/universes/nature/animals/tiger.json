@@ -1,0 +1,11 @@
+{
+  "name": "Tiger",
+  "nameLatin": "Panthera tigris",
+  "diet": [
+    "Deer",
+    "Wild Boar",
+    "Buffalo"
+  ],
+  "size": "Large",
+  "lifespan": 20
+}

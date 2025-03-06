@@ -13,6 +13,8 @@
         <PageSection title="Pokemon API response">
           <ExampleApiResponsePokemon />
         </PageSection>
+        <ExampleLordOfTheRings />
+        <ExampleNature />
       </div>
     </UContainer>
   </div>

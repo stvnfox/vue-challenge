@@ -1,0 +1,11 @@
+{
+  "name": "Mouse",
+  "nameLatin": "Mus musculus",
+  "diet": [
+    "Seeds",
+    "Nuts",
+    "Fruit"
+  ],
+  "size": "Small",
+  "lifespan": 2
+}

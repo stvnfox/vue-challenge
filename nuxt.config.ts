@@ -3,13 +3,13 @@ import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
   modules: [
-    '@vueuse/nuxt',
-    '@pinia/nuxt',
-    '@vite-pwa/nuxt',
+    '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/ui',
+    '@pinia/nuxt',
+    '@vite-pwa/nuxt',
+    '@vueuse/nuxt',
     'nuxt-api-party',
-    '@nuxt/content',
   ],
 
   experimental: {

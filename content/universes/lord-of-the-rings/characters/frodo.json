@@ -1,0 +1,7 @@
+{
+  "nameFirst": "Frodo",
+  "nameLast": "Baggins",
+  "hobbies": ["gardening", "reading", "adventuring"],
+  "age": 50,
+  "height": 4.5
+}

@@ -7,10 +7,14 @@ description: Instructions for the Rick & Morty and Pokémon Overview Application
 
 ## Objective
 
-Create a scalable Nuxt application that displays two overviews: **Rick & Morty characters** and **Pokémon**. Each overview must:
+Create a scalable Nuxt application that displays at least two overviews: **Rick & Morty characters** and **Pokémon**. Each overview must:
 
 1. **Overview Pages**: One for Rick & Morty and one for Pokémon.
 2. **Detail Pages**: Clicking an item should navigate to a detail page, showing its specific data.
+
+### Bonus points
+
+The example also includes two additional universes: Lord of the Rings and Nature. Study the example code to see how to add new universes. The data source is different, but the components displaying the data should be the same.
 
 Use these APIs:
 
