@@ -90,7 +90,7 @@ Fork this repository and submit your solution as a new repository. Once complete
 - [ ] **Navigation** from overview to detail pages.
 - [ ] **Consistent UI/UX** between overviews and detail pages.
 - [ ] **Grid and List Views** implemented.
-- [ ] **Modular UI Components**: Components must only handle UI, not logic. Logic for data fetching and handling should be in separate components.
+- [ ] **Modular UI Components**: UI components should focus only on presentation, while data fetching and logic should be handled separately. A component that fetches data should do just that and pass it to a UI component for rendering. This keeps responsibilities clear, making the code easier to maintain and understand.
 - [ ] **Clear Separation of Concerns**: No component should mix too much logic with rendering. Keep them single-purpose.
 - [ ] **Reusable Components**: Build components that are scalable and flexible.
 - [ ] **API Data Fetching**: Ensure data from the APIs is fetched and displayed correctly. Please check out the existing examples in the example code.
