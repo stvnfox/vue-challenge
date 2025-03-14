@@ -7,6 +7,9 @@
             <ApplicationHeaderLink to="/" label="Home" />
           </li>
           <li>
+            <ApplicationHeaderLink to="/pokemon" label="Pokemon" />
+          </li>
+          <li>
             <ApplicationHeaderLink to="/assignment" label="Read the assignment instructions" />
           </li>
         </ul>
