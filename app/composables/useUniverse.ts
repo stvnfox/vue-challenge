@@ -16,6 +16,7 @@ const universes = {
       name: item.name,
       id: crypto.randomUUID(),
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonId(item.url)}.png`,
+      url: `/pokemon/${item.name}`,
     })) || [],
   },
 }

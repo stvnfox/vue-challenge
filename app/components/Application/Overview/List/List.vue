@@ -47,7 +47,7 @@ const columns: TableColumn<OverviewItem>[] = [
         h(UButton, {
           icon: 'i-lucide-arrow-right',
           class: 'ml-auto',
-          to: row.getValue('url'),
+          to: row.original.url,
         }, () => 'See details'),
       )
     },

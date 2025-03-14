@@ -24,7 +24,7 @@ const props = defineProps<{
     <template #footer>
       <UButton
         icon="i-lucide-arrow-right"
-        :to="`/pokemon/${props.item.name}`"
+        :to="props.item.url"
         class="ml-auto"
       >
         See details
