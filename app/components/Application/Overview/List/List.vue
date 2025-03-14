@@ -60,6 +60,10 @@ const columns: TableColumn<OverviewItem>[] = [
     :data="items"
     :columns="columns"
     class="flex-1"
-    :ui="{ thead: 'hidden', tbody: 'border-y border-neutral-800', td: 'first:w-4' }"
+    :ui="{
+      thead: 'hidden',
+      tbody: 'border-y border-neutral-800',
+      td: 'first:w-4',
+    }"
   />
 </template>
