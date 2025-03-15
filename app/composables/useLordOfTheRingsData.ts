@@ -1,6 +1,6 @@
 export function useLordOfTheRingsData() {
   const status = ref('loading')
-  const { data } = useAsyncData<ApiResponse>('lord-of-the-rings-characters', async () => {
+  const { data } = useAsyncData<OverviewApiResponse>('lord-of-the-rings-characters', async () => {
     try {
       status.value = 'loading'
       const results = await queryCollection('lordOfTheRingsCharacter')
@@ -22,7 +22,35 @@ export function useLordOfTheRingsData() {
   })
 
   return {
-    data: data as Ref<ApiResponse | null>,
+    data: data as Ref<OverviewApiResponse | null>,
+    status,
+  }
+}
+
+export function useLordOfTheRingsDetailData(id: string) {
+  const status = ref('loading')
+  const { data } = useAsyncData(`lord-of-the-rings-character-${id}`, async () => {
+    try {
+      status.value = 'loading'
+      const result = await queryCollection('lordOfTheRingsCharacter').where('nameFirst', '=', capitalizeId(id)).first()
+
+      if (!result) {
+        status.value = 'error'
+        throw new Error('No Lord of the Rings character found')
+      }
+
+      status.value = 'success'
+      return result
+    }
+    catch (e) {
+      status.value = 'error'
+      console.error('Error fetching Lord of the Rings character:', e)
+      return null
+    }
+  })
+
+  return {
+    data,
     status,
   }
 }
