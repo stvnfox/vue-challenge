@@ -16,6 +16,9 @@
             <ApplicationHeaderLink to="/lord-of-the-rings" label="Lord of the Rings" />
           </li>
           <li>
+            <ApplicationHeaderLink to="/nature" label="Nature" />
+          </li>
+          <li>
             <ApplicationHeaderLink to="/assignment" label="Read the assignment instructions" />
           </li>
         </ul>
