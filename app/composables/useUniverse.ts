@@ -1,4 +1,6 @@
-type UniverseKey = keyof typeof universes
+import { extractPokemonId } from '~/helpers/extract-pokemon-id'
+
+type UniverseKey = 'pokemon' | 'rick-and-morty'
 
 export interface OverviewItem {
   name: string
@@ -6,25 +8,39 @@ export interface OverviewItem {
   image: string
   url: string
 }
-
-interface PokemonApiResponse {
-  results: { name: string, url: string }[]
+interface ApiResponse {
+  results: unknown[]
 }
 
-function extractPokemonId(url: string): string {
-  const matches = url.match(/\/pokemon\/(\d+)\//)
-  return matches && matches[1] ? matches[1] : '1'
+interface UniverseHandler {
+  fetchData: () => { data: Ref<ApiResponse | null>, status: Ref<string> }
+  formatItems: (items: ApiResponse) => OverviewItem[]
 }
 
-const universes = {
-  pokemon: {
+const universes: Record<UniverseKey, UniverseHandler> = {
+  'pokemon': {
     fetchData: () => usePokemonData('pokemon'),
-    formatItems: (items: PokemonApiResponse) => items.results.map(item => ({
-      name: item.name,
-      id: crypto.randomUUID(),
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonId(item.url)}.png`,
-      url: `/pokemon/${item.name}`,
-    })) || [],
+    formatItems: (items: ApiResponse) => {
+      const results = items.results as { name: string, url: string }[]
+      return results.map(item => ({
+        name: item.name,
+        id: crypto.randomUUID(),
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${extractPokemonId(item.url)}.png`,
+        url: `/pokemon/${item.name}`,
+      })) || []
+    },
+  },
+  'rick-and-morty': {
+    fetchData: () => useRickAndMortyData('character'),
+    formatItems: (items: ApiResponse) => {
+      const results = items.results as { name: string, image: string, id: string }[]
+      return results.map(item => ({
+        name: item.name,
+        id: crypto.randomUUID(),
+        image: item.image,
+        url: `/rick-and-morty/${item.id}`,
+      })) || []
+    },
   },
 }
 
@@ -32,7 +48,11 @@ export function useUniverse(universe: UniverseKey) {
   const universeHandler = universes[universe]
   const { data, status } = universeHandler.fetchData()
 
-  const formattedItems = computed(() => universeHandler.formatItems(data.value as PokemonApiResponse))
+  const formattedItems = computed(() => {
+    if (!data.value)
+      return [] as OverviewItem[]
+    return universeHandler.formatItems(data.value)
+  })
 
   return {
     items: formattedItems,
