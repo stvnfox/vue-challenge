@@ -3,16 +3,24 @@ import type { TableColumn } from '@nuxt/ui'
 import { h, resolveComponent } from 'vue'
 
 const type = inject('type')
-const { items } = useUniverse(type)
+const { items } = useUniverse(type as UniverseKey)
 
 const UAvatar = resolveComponent('UAvatar')
 const UButton = resolveComponent('UButton')
+const UIcon = resolveComponent('UIcon')
 
 const columns: TableColumn<OverviewItem>[] = [
   {
     accessorKey: 'image',
     header: '',
     cell: ({ row }) => {
+      if (row.original.icon) {
+        return h(UIcon, {
+          name: row.original.icon,
+          class: 'w-16 h-16',
+        })
+      }
+
       return h(UAvatar, {
         src: row.getValue('image'),
         alt: row.getValue('name'),

@@ -16,7 +16,13 @@ const props = defineProps<{
         {{ props.item.name }}
       </h2>
     </template>
+    <UIcon
+      v-if="props.item.icon"
+      :name="props.item.icon"
+      class="size-32 block mx-auto"
+    />
     <img
+      v-if="props.item.image"
       :src="props.item.image"
       alt=""
       class="size-32 mx-auto rounded-full"
