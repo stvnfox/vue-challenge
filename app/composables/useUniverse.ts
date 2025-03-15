@@ -1,5 +1,12 @@
 type UniverseKey = keyof typeof universes
 
+export interface OverviewItem {
+  name: string
+  id: string
+  image: string
+  url: string
+}
+
 interface PokemonApiResponse {
   results: { name: string, url: string }[]
 }

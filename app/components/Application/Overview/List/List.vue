@@ -3,17 +3,10 @@ import type { TableColumn } from '@nuxt/ui'
 import { h, resolveComponent } from 'vue'
 
 const type = inject('type')
-
 const { items } = useUniverse(type)
 
 const UAvatar = resolveComponent('UAvatar')
 const UButton = resolveComponent('UButton')
-
-interface OverviewItem {
-  image: string
-  name: string
-  url: string
-}
 
 const columns: TableColumn<OverviewItem>[] = [
   {
