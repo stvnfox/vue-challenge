@@ -11,19 +11,21 @@ export interface OverviewItem {
   image?: string
   icon?: string
 }
-export interface ApiResponse {
+export interface OverviewApiResponse {
   results: unknown[]
 }
 
 interface UniverseHandler {
-  fetchData: () => { data: Ref<ApiResponse | null>, status: Ref<string> }
-  formatItems: (items: ApiResponse) => OverviewItem[]
+  fetchOverviewData: () => { data: Ref<OverviewApiResponse | null>, status: Ref<string> }
+  fetchDetailData: (id: string | number) => { data: Ref<unknown | null>, status: Ref<string> }
+  formatOverviewItems: (items: OverviewApiResponse) => OverviewItem[]
 }
 
 const universes: Record<UniverseKey, UniverseHandler> = {
   'pokemon': {
-    fetchData: () => usePokemonData('pokemon'),
-    formatItems: (items: ApiResponse) => {
+    fetchOverviewData: () => usePokemonData('pokemon'),
+    fetchDetailData: id => usePokemonData(`pokemon/${id}`),
+    formatOverviewItems: (items: OverviewApiResponse) => {
       if (!items || !items.results)
         return []
 
@@ -37,8 +39,9 @@ const universes: Record<UniverseKey, UniverseHandler> = {
     },
   },
   'rick-and-morty': {
-    fetchData: () => useRickAndMortyData('character'),
-    formatItems: (items: ApiResponse) => {
+    fetchOverviewData: () => useRickAndMortyData('character'),
+    fetchDetailData: id => useRickAndMortyData(`character/${id}`),
+    formatOverviewItems: (items: OverviewApiResponse) => {
       if (!items || !items.results)
         return []
 
@@ -52,8 +55,9 @@ const universes: Record<UniverseKey, UniverseHandler> = {
     },
   },
   'lord-of-the-rings': {
-    fetchData: () => useLordOfTheRingsData(),
-    formatItems: (items: ApiResponse) => {
+    fetchOverviewData: () => useLordOfTheRingsData(),
+    fetchDetailData: id => useLordOfTheRingsDetailData(id as string),
+    formatOverviewItems: (items: OverviewApiResponse) => {
       if (!items || !items.results)
         return []
 
@@ -72,8 +76,9 @@ const universes: Record<UniverseKey, UniverseHandler> = {
     },
   },
   'nature': {
-    fetchData: () => useNatureData(),
-    formatItems: (items: ApiResponse) => {
+    fetchOverviewData: () => useNatureData(),
+    fetchDetailData: id => useNatureDetailData(id as string),
+    formatOverviewItems: (items: OverviewApiResponse) => {
       if (!items || !items.results)
         return []
 
@@ -94,13 +99,13 @@ const universes: Record<UniverseKey, UniverseHandler> = {
 
 export function useUniverse(universe: UniverseKey) {
   const universeHandler = universes[universe]
-  const { data, status } = universeHandler.fetchData()
+  const { data, status } = universeHandler.fetchOverviewData()
 
   const formattedItems = computed(() => {
     try {
       if (!data.value)
         return [] as OverviewItem[]
-      return universeHandler.formatItems(data.value)
+      return universeHandler.formatOverviewItems(data.value)
     }
     catch (error) {
       console.error(`Error formatting items for universe ${universe}:`, error)
@@ -112,5 +117,15 @@ export function useUniverse(universe: UniverseKey) {
     items: formattedItems,
     status,
     universe,
+  }
+}
+
+export function useUniverseDetail(universe: UniverseKey, id: string | number) {
+  const universeHandler = universes[universe]
+  const { data, status } = universeHandler.fetchDetailData(id)
+
+  return {
+    data,
+    status,
   }
 }
