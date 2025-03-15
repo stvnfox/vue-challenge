@@ -19,7 +19,7 @@ const props = defineProps<{
     <img
       :src="props.item.image"
       alt=""
-      class="size-32 mx-auto"
+      class="size-32 mx-auto rounded-full"
     >
     <template #footer>
       <UButton
