@@ -1,13 +1,15 @@
-import { extractPokemonId } from '~/helpers/extract-pokemon-id'
+import { extractPokemonId } from '~/utils/extract-pokemon-id'
 import { useLordOfTheRingsData } from './useLordOfTheRingsData'
+import { useNatureData } from './useNatureData'
 
-type UniverseKey = 'pokemon' | 'rick-and-morty' | 'lord-of-the-rings'
+export type UniverseKey = 'pokemon' | 'rick-and-morty' | 'lord-of-the-rings' | 'nature'
 
 export interface OverviewItem {
   name: string
   id: string
-  image: string
   url: string
+  image?: string
+  icon?: string
 }
 export interface ApiResponse {
   results: unknown[]
@@ -67,6 +69,25 @@ const universes: Record<UniverseKey, UniverseHandler> = {
           url: `/lord-of-the-rings/${urlParam}`,
         }
       })
+    },
+  },
+  'nature': {
+    fetchData: () => useNatureData(),
+    formatItems: (items: ApiResponse) => {
+      if (!items || !items.results)
+        return []
+
+      const results = items.results as { name: string, icon: string, id: string }[]
+      return results.map((item) => {
+        const urlParam = item.name.toLowerCase()
+
+        return {
+          name: item.name,
+          id: crypto.randomUUID(),
+          icon: item.icon,
+          url: `/nature/${urlParam}`,
+        }
+      }) || []
     },
   },
 }
