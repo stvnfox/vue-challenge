@@ -1,7 +1,3 @@
-import { extractPokemonId } from '~/utils/extract-pokemon-id'
-import { useLordOfTheRingsData } from './useLordOfTheRingsData'
-import { useNatureData } from './useNatureData'
-
 export type UniverseKey = 'pokemon' | 'rick-and-morty' | 'lord-of-the-rings' | 'nature'
 
 export interface OverviewItem {
@@ -120,9 +116,12 @@ export function useUniverse(universe: UniverseKey) {
   }
 }
 
-export function useUniverseDetail(universe: UniverseKey, id: string | number) {
+export function useUniverseDetail<T>(universe: UniverseKey, id: string | number) {
   const universeHandler = universes[universe]
-  const { data, status } = universeHandler.fetchDetailData(id)
+  const { data, status } = universeHandler.fetchDetailData(id) as {
+    data: Ref<T>
+    status: Ref<string, string>
+  }
 
   return {
     data,
