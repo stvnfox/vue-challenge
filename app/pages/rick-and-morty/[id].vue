@@ -9,7 +9,10 @@ const { data, status } = useUniverseDetail<RickAndMortyCharacter>('rick-and-mort
   <div class="py-8">
     <UContainer>
       <ApplicationBackToOverview to="/rick-and-morty" />
-      <ApplicationDetail :status="status">
+      <ApplicationDetail
+        :status="status"
+        to="/rick-and-morty"
+      >
         <ApplicationDetailHeader
           :title="data.name"
           :image="data.image"
