@@ -2,8 +2,11 @@
 import type { TableColumn } from '@nuxt/ui'
 import { h, resolveComponent } from 'vue'
 
-const type = inject('type')
-const { items } = useUniverse(type as UniverseKey)
+const props = defineProps<{
+  items: OverviewItem[]
+  status: string
+  type: UniverseKey
+}>()
 
 const UAvatar = resolveComponent('UAvatar')
 const UButton = resolveComponent('UButton')
@@ -17,7 +20,7 @@ const columns: TableColumn<OverviewItem>[] = [
       if (row.original.icon) {
         return h(UIcon, {
           name: row.original.icon,
-          class: 'w-16 h-16',
+          class: 'size-14',
         })
       }
 
@@ -57,14 +60,24 @@ const columns: TableColumn<OverviewItem>[] = [
 </script>
 
 <template>
-  <UTable
-    :data="items"
-    :columns="columns"
-    class="flex-1"
-    :ui="{
-      thead: 'hidden',
-      tbody: 'border-y border-neutral-800',
-      td: 'first:w-4',
-    }"
-  />
+  <div class="flex flex-col gap-4">
+    <ApplicationLoading v-if="props.status === 'pending'" />
+    <ApplicationError
+      v-else-if="props.status === 'error'"
+      title="Oops.. Something went wrong"
+      message="Sorry, we couldn't fetch the data. Please try again later."
+      :to="`/${props.type}`"
+    />
+    <UTable
+      v-else
+      :data="props.items"
+      :columns="columns"
+      class="flex-1"
+      :ui="{
+        thead: 'hidden',
+        tbody: 'border-y border-neutral-800',
+        td: 'first:w-4',
+      }"
+    />
+  </div>
 </template>

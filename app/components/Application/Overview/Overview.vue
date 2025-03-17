@@ -1,4 +1,8 @@
 <script setup lang="ts">
+const props = defineProps<{
+  type: UniverseKey
+}>()
+
 const views = [
   {
     label: 'Grid',
@@ -11,6 +15,8 @@ const views = [
     slot: 'list',
   },
 ]
+
+const { items, status } = useUniverse(props.type)
 </script>
 
 <template>
@@ -25,10 +31,18 @@ const views = [
       }"
     >
       <template #grid>
-        <ApplicationOverviewGrid />
+        <ApplicationOverviewGrid
+          :items="items"
+          :status="status"
+          :type="type"
+        />
       </template>
       <template #list>
-        <ApplicationOverviewList />
+        <ApplicationOverviewList
+          :items="items"
+          :status="status"
+          :type="type"
+        />
       </template>
     </UTabs>
   </section>
