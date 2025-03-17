@@ -16,8 +16,8 @@ const props = defineProps<{
     <UIcon
       v-if="props.icon"
       :name="props.icon"
-      size="3xl"
+      class="size-48"
     />
-    <h1 class="text-2xl md:text-4xl font-bold" v-text="props.title" />
+    <h1 class="text-2xl md:text-4xl font-bold capitalize" v-text="props.title" />
   </header>
 </template>
