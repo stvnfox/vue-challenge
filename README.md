@@ -88,6 +88,12 @@ Fork the repository, implement your solution, and submit it as a new repository.
 
 ---
 
+## Run my submission
+
+1. Clone the repository
+2. Install all packages by running `pnpm install`
+3. Run the project in development mode by running `pnpm dev`
+
 ## Submission Checklist
 
 Ensure your application meets these requirements before submission:
