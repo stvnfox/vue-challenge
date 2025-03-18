@@ -1,5 +1,7 @@
-export type UniverseKey = 'pokemon' | 'rick-and-morty' | 'lord-of-the-rings' | 'nature'
+import { useStorage } from '@vueuse/core'
 
+export type UniverseKey = 'pokemon' | 'rick-and-morty' | 'lord-of-the-rings' | 'nature'
+export type UniverseView = 'grid' | 'list'
 export interface OverviewItem {
   name: string
   id: string
@@ -126,5 +128,22 @@ export function useUniverseDetail<T>(universe: UniverseKey, id: string | number)
   return {
     data,
     status,
+  }
+}
+
+export function useUniverseView(universe: UniverseKey) {
+  const storageKey = `${universe}-view`
+  const view = useStorage<UniverseView>(storageKey, 'grid')
+
+  // Using this value to make sure we don't have hydration errors because localStorage is not available on the server + nice way to show loading state
+  const showOverview = ref(false)
+
+  onMounted(() => {
+    showOverview.value = true
+  })
+
+  return {
+    view,
+    showOverview,
   }
 }

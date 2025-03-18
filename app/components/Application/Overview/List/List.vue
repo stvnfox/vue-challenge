@@ -61,9 +61,8 @@ const columns: TableColumn<OverviewItem>[] = [
 
 <template>
   <div class="flex flex-col gap-4">
-    <ApplicationLoading v-if="props.status === 'pending'" />
     <ApplicationError
-      v-else-if="props.status === 'error'"
+      v-if="props.status === 'error'"
       title="Oops.. Something went wrong"
       message="Sorry, we couldn't fetch the data. Please try again later."
       :to="`/${props.type}`"
