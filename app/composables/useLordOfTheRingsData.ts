@@ -1,8 +1,8 @@
 export function useLordOfTheRingsData() {
-  const status = ref('loading')
+  const status = ref('idle')
   const { data } = useAsyncData<OverviewApiResponse>('lord-of-the-rings-characters', async () => {
     try {
-      status.value = 'loading'
+      status.value = 'pending'
       const results = await queryCollection('lordOfTheRingsCharacter')
         .all()
 
@@ -28,10 +28,10 @@ export function useLordOfTheRingsData() {
 }
 
 export function useLordOfTheRingsDetailData(id: string) {
-  const status = ref('loading')
+  const status = ref('idle')
   const { data } = useAsyncData(`lord-of-the-rings-character-${id}`, async () => {
     try {
-      status.value = 'loading'
+      status.value = 'pending'
       const result = await queryCollection('lordOfTheRingsCharacter').where('nameFirst', '=', capitalizeId(id)).first()
 
       if (!result) {

@@ -1,8 +1,8 @@
 export function useNatureData() {
-  const status = ref('loading')
+  const status = ref('idle')
   const { data } = useAsyncData<OverviewApiResponse>('nature-animals', async () => {
     try {
-      status.value = 'loading'
+      status.value = 'pending'
       const results = await queryCollection('natureAnimal')
         .all()
 
@@ -28,10 +28,10 @@ export function useNatureData() {
 }
 
 export function useNatureDetailData(id: string) {
-  const status = ref('loading')
+  const status = ref('idle')
   const { data } = useAsyncData(`nature-animal-${id}`, async () => {
     try {
-      status.value = 'loading'
+      status.value = 'pending'
       const result = await queryCollection('natureAnimal').where('name', '=', capitalizeId(id)).first()
 
       if (!result) {
