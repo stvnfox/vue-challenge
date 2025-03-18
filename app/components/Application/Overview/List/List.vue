@@ -68,7 +68,7 @@ const columns: TableColumn<OverviewItem>[] = [
       :to="`/${props.type}`"
     />
     <UTable
-      v-else
+      v-if="props.status === 'success'"
       :data="props.items"
       :columns="columns"
       class="flex-1"

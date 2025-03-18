@@ -14,7 +14,7 @@ const props = defineProps<{
       message="Sorry, we couldn't fetch the data. Please try again later."
       :to="`/${props.type}`"
     />
-    <template v-else>
+    <template v-if="props.status === 'success'">
       <div
         v-if="props.items.length > 0"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
